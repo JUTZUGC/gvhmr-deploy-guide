@@ -1,0 +1,114 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "gvhmr",
+    "nameCn": "GVHMR",
+    "repoName": "gvhmr-deploy-guide",
+    "oneLiner": "用重力-视角坐标从单目视频恢复世界坐标系下的人体动作",
+    "officialRepo": "https://github.com/zju3dv/GVHMR",
+    "officialDocs": "https://github.com/zju3dv/GVHMR/blob/main/docs/INSTALL.md",
+    "stars": "2252",
+    "license": "非商用学术许可（禁止商用）",
+    "highlights": [
+      "SIGGRAPH Asia 2024 论文实现",
+      "单目视频即可恢复世界坐标动作",
+      "默认用 SimpleVO，比 DPVO 快",
+      "支持整目录批量推理",
+      "提供 HuggingFace 与 Colab 演示",
+      "2252 stars"
+    ],
+    "mcpSupport": "项目本身不带 MCP；本仓库的 MCP server 提供环境安装、权重放置与 demo 命令说明。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-11-04",
+    "verification": [
+      [
+        "INSTALL 确认依赖、权重目录结构与 demo 命令",
+        "已核对 2026-11-04"
+      ],
+      [
+        "LICENSE 确认为非商用学术许可",
+        "已核对 2026-11-04"
+      ],
+      [
+        "未实测环境安装、权重下载与推理",
+        "说明 2026-11-04"
+      ],
+      [
+        "MCP 冒烟：initialize / tools/list 返回 get_guide、search_guide、get_project_info",
+        "已验证 2026-11-04"
+      ],
+      [
+        "非目标宿主调用 get_guide 被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-11-04"
+      ]
+    ],
+    "deploy": {
+      "type": "script",
+      "requires": [
+        "python"
+      ],
+      "steps": [
+        "git clone https://github.com/zju3dv/GVHMR.git",
+        "cd GVHMR",
+        "pip install -r requirements.txt",
+        "pip install -e .",
+        "python -c \"import gvhmr; print(gvhmr.__file__)\""
+      ],
+      "stepsPs": [
+        "git clone https://github.com/zju3dv/GVHMR.git",
+        "Set-Location GVHMR",
+        "pip install -r requirements.txt",
+        "pip install -e .",
+        "python -c \"import gvhmr; print(gvhmr.__file__)\""
+      ],
+      "source": "https://github.com/zju3dv/GVHMR/blob/main/docs/INSTALL.md"
+    },
+    "pitfalls": [
+      "缺权重报错：按 INSTALL 的目录结构放齐 5 组文件",
+      "SMPL 下载失败：需先在官网注册账号并同意许可",
+      "torch 版本冲突：按 requirements 指定版本新建环境",
+      "CUDA 不可用：确认驱动与 torch 的 CUDA 版本匹配",
+      "显存不足：改用 `-s` 或降低分辨率",
+      "输出抖动：固定机位务必加 `-s`",
+      "pip install -e . 失败：确认 Python 3.10，且先装 requirements"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/gvhmr-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/gvhmr-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "GVHMR",
+    "GVHMR 安装",
+    "单目 人体 动作恢复",
+    "世界坐标 动作",
+    "SMPL-X 动作估计",
+    "视频 动作捕捉",
+    "SIGGRAPH Asia 2024",
+    "人体 轨迹 恢复",
+    "gvhmr 教程",
+    "GVHMR deploy guide"
+  ],
+  "topics": [
+    "human-motion",
+    "smplx",
+    "computer-vision",
+    "pytorch",
+    "3d-reconstruction",
+    "gvhmr"
+  ]
+}
